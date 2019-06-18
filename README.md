@@ -3,12 +3,19 @@ University Course Registration System using OOP
 
 Description:
 Different customers come to the service counter at different times to get some service (get their gifts wrapped, say), and assume for simplicity that the service time per customer is some constant T.
+
 The service is first-come first-serve.
+
 Given as input a group of customers along with an arrival time for each customer, the kinds of queries that your program should be able to answer are:
+
 • How long will a given Person wait?
+
 • How many customers in that group got served on that typical day?
+
 • What is the total idle time of the employee (the person behind the service counter)?
+
 • How long is the longest break that the employeehas?
+
 • What is the longest that the waiting line got, measured in the number of people waiting, not including the person being served? (Note that if a new person arrives right at the exact time when the person at the front of the line is called for service, both the new person and the person being called for service are included.)
 Definition: A break is the period of time between the end of serving one person and the beginning of serving the next person. If the next person is right there, waiting in the queue, the break length is 0. Note that if the last person in the group is done before 5pm, then the employee will have a last break extending from the time the last person is done until 5pm. Over the span of the day, the employee may end up having several breaks, or no break at all. The employee does not take any break while serving a customer of if there is a person waiting to be served.
 Definition: The total idle time of the employee is the sum of the lengths of the breaks that the employee ends up having.
