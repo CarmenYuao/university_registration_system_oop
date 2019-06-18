@@ -11,7 +11,8 @@ Course name, course id, maximum number of students registered in the course, cur
 
 ▪ Req 03: The system shall allow the Admin to perform the following tasks: (these are the options that will be displayed in the 
 
-Admin menu on your program when the administrator logs in)
+Admin menu on your program when the administrator logs in
+
 Course Management
 
 1.Create a new course
