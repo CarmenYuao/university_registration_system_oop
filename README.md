@@ -2,43 +2,50 @@
 University Course Registration System using OOP
 
 Description:
-Different customers come to the service counter at different times to get some service (get their gifts wrapped, say), and assume for simplicity that the service time per customer is some constant T.
-
-The service is first-come first-serve.
-
-Given as input a group of customers along with an arrival time for each customer, the kinds of queries that your program should be able to answer are:
-
-• How long will a given Person wait?
-
-• How many customers in that group got served on that typical day?
-
-• What is the total idle time of the employee (the person behind the service counter)?
-
-• How long is the longest break that the employeehas?
-
-• What is the longest that the waiting line got, measured in the number of people waiting, not including the person being served? (Note that if a new person arrives right at the exact time when the person at the front of the line is called for service, both the new person and the person being called for service are included.)
-
-Definition: A break is the period of time between the end of serving one person and the beginning of serving the next person. If the next person is right there, waiting in the queue, the break length is 0. Note that if the last person in the group is done before 5pm, then the employee will have a last break extending from the time the last person is done until 5pm. Over the span of the day, the employee may end up having several breaks, or no break at all. The employee does not take any break while serving a customer of if there is a person waiting to be served.
-
-Definition: The total idle time of the employee is the sum of the lengths of the breaks that the employee ends up having.
-The precise formatting of the queries and answers for your program is detailed below.
-
-The Input:
-Your program will take two input files from the command prompt.
-The first file, called customersfile.txt, has the customers’ information, such that each customer has one "paragraph" of two lines, with at least one blank line between one paragraph and the next. The format of the paragraph of a customer is:
-ID-NUMBER: a unique integer customer id ARRIVAL-TIME: hh:mm:ss
-For example, for a person arriving 15 minutes and 27 seconds after 9am, the arrival time is 9:15:27; for a person arriving 17 minutes 35 seconds after 10am, the arrival time is 10:17:35; and for a person arriving 3:30sharp, the arrival time is 3:30:0.
-The first line of customersfile.txt is an unsigned positive integer, representing the constant service time per customer, in seconds. After that line there is at least one blank line. After that, the 2-line paragraphs follow.
-
-Note that some customers may arrive before 9am or after 5pm. Those who are not served before 5pm are dismissed without service. If the last person served begins to get service before 5pm and the service time will take the clock beyond 5pm, s/he is served completely before the employee goes home. The waiting time of a person that arrives after 5pm is 0. The waiting time of a person that arrives before 5pm but does not get served is the time from his/her arrival until 5pm.                                       
-You are guaranteed that the arrival times of the customers in customersfile.txt are in chronological order. That is, the arrival time of a customer A is greater than the arrival times of all the customers that occur before A in the input file. Also, you are guaranteed that all customers ids are positive, and no customer id occurs multiple times in the input file.
-
-The second input file, called queriesfile.txt, will have a sequence of queries, one query per line, where the queries can be:
-WAITING-TIME-OF customer-id // measured in seconds NUMBER-OF-CUSTOMERS-SERVED LONGEST-BREAK-LENGTH // measured in seconds
-TOTAL-IDLE-TIME // measured in seconds MAXIMUM-NUMBER-OF-PEOPLE-IN-QUEUE-AT-ANY-TIME
-Note that there could be many queries beginning with WAITING-TIME-OF but ending with different id numbers.
-
-The output:
-Your program must take as input the two input files above, in that order. That is, we should be able to compile your program into an executable file (called Program2, say), then call it from the command-line like this: Program2 customersfile.txt queriesfile.txt
-
-Your program must then output as many lines as there are query lines: the kth output line should be the answer to the kth query line in file queriesfile.txt. Your output line answer to a query should begin by repeating the exact same query, followed by a colon (:), followed by the query-answer.
+▪ Req 01: The school shall store the following information about each course:
+      Course name, course id, maximum number of students registered in the course, current number of registered students, a list of names of students being registered in the given course, course instructor, course section number, course location.
+▪ See attached MyUniversityCourses.csv file for your university data.
+▪ Req 02: The system shall allow two types of users: Admin and Student.
+▪ Req 03: The system shall allow the Admin to perform the following tasks: (these are the options that will be displayed in the Admin menu on your program when the administrator logs in)
+Course Management
+1.Create a new course
+2.Delete a course
+3.Edit a course (this will allow the admin to edit any information on the course except for course ID and name)
+4.Display information for a given course (by course ID)
+5.Register a student (this option will allow the admin to add a student without assigning to a course check Req 11 for student’s information – Hint: You might need to have an ArrayList of Students where you store Student objects)
+6.Exit
+Reports
+1.View all courses (for every course the admin should be able to see the list of enrolled student’s names, enrolled student’s ids, number of students registered, and the maximum number of students allowed to be registered)
+2.View all courses that are FULL (reached the maximum number of students)
+3.Write to a file the list of course that are full
+4.View the names of the students that are registered in a specific course
+5.View the list of courses that a given student is registered in (given a student first name and last name the system shall display all the courses that student is registered in)
+￼￼Page2
+6. Sort the courses based on the current number of students registered 7. Exit
+▪ Req 04: The system shall allow the student to perform the following tasks: Course Management
+1. 2. 3.
+4.
+5. 6.
+View all courses
+View all courses that are not full
+Register in a course (in this case the student must enter the course name, section, and student full name, the name will be added to the appropriate course) Withdrawfromacourse(inthiscasethestudentwillbeaskedtoenterher/hisnameand the course name, then the name of the student will be taken off from the given course’s list) View all courses that the current student is registered in
+Exit
+design meeting with your team you agreed to adopt the following design:
+During your
+▪ Req 05: Define an Interface for admin class that will have the signatures of the methods that will be
+used by the admin.
+▪ Req 06: Define an Interface for a student class that will have the signatures of the methods that will be used by the student.
+▪ Req 07: Both classes Admin and Student inherit from a class named User.
+A user should have at least the following class members: username, password, first name, and last name. (You will need to decide on the methods of a User class. These methods can then be inherited or overridden by the Student and/or the Admin class.)
+▪ Req 08: At the beginning of launching the program, you will need to read all the courses’ information from the comma delimited file MyUniversityCourses.csv into an ArrayList of Course Objects. Notice that initially the number of students registered is zero.
+The student list is initially null (there are not students registered in the class at the beginning).
+▪ Req 09: For simplicity assume that there is one Admin in the program. The username and password for the admin is: Admin and Admin001
+▪ Req 10: You do not need to follow this requirement, you can come up with your own design and this is just one possible solution. At the start of the program, the user is asked to check if they are a student or an admin then if the user is admin, she/he will be asked to enter the username and password. Same applies for student.
+▪ Req 11: A student class should at least have a username, password, first name and last name.
+You will need to decide on how to keep track on the students’ courses if needed. You might need to decide on how to store a list of students.
+▪ Important Note: A student can only be registered into the course system by an admin. Furthermore,
+￼￼￼Page3
+every student should have a unique username and a password as defined by them. One such example would be the student named “First Second” with a username and password: Student and Student001.
+▪ Req 12: Serialization
+Serializing an object allows the programmer to convert the state of that object into a byte stream
+that can be reverted back into a copy of the object. A Java object is serializable if its class or any of its superclasses implements either the java.io.Serializable interface or its subinterface, java.io.Externalizable. Deserialization is the process of converting the serialized form of an object back into a copy of the object. You will need to use Serialization to store an object permanently (in this assignment’s case it could be used to store the ArrayLists of Student object and the ArrayList of the courses object). Deserialization will be used to read the files where you stored the objects, so you can use them again in your program. When the program exits, you will need to write the latest copy of the ArrayLists or the object you are using in your program into the serialized binary file. The moment you launch your program, you will need to read the files to initialize your objects in your program.
