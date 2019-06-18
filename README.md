@@ -26,8 +26,6 @@ WAITING-TIME-OF customer-id // measured in seconds NUMBER-OF-CUSTOMERS-SERVED LO
 TOTAL-IDLE-TIME // measured in seconds MAXIMUM-NUMBER-OF-PEOPLE-IN-QUEUE-AT-ANY-TIME
 Note that there could be many queries beginning with WAITING-TIME-OF but ending with different id numbers.
 The output:
-Your program must take as input the two input files above, in that order. That is, we should be able to compile your program into an executable file (called Program2, say), then call it from the command-line like this:
->> Program2 customersfile.txt queriesfile.txt
-(Research how to accept text files as arguments in Eclipse)
+Your program must take as input the two input files above, in that order. That is, we should be able to compile your program into an executable file (called Program2, say), then call it from the command-line like this: Program2 customersfile.txt queriesfile.txt
 Your program must then output as many lines as there are query lines: the kth output line should be the answer to the kth query line in file queriesfile.txt. Your output line answer to a query should begin by repeating the exact same query, followed by a colon (:), followed
 by the query-answer.
